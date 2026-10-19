@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>오늘 뭐 입지? | 날씨 옷차림 추천</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <p class="eyebrow">WEATHER OUTFIT GUIDE</p>
+      <h1>오늘 뭐 입지? 👕</h1>
+      <p class="subtitle">현재 위치의 기상청 단기예보를 바탕으로 오늘의 옷차림을 추천해드려요.</p>
+    </section>
+
+    <section class="api-box">
+      <label for="apiKey">기상청 단기예보 API 일반 인증키</label>
+      <div class="key-row">
+        <input
+          id="apiKey"
+          type="password"
+          placeholder="발급받은 일반 인증키(Decoding)를 붙여넣으세요"
+          autocomplete="off"
+        />
+        <button id="saveKeyBtn" type="button">키 저장</button>
+      </div>
+      <p class="hint">공공데이터포털에서 발급받은 <strong>일반 인증키(Decoding)</strong>를 사용하세요.</p>
+    </section>
+
+    <section class="weather-card" id="weatherCard">
+      <div class="card-top">
+        <div>
+          <p class="location" id="locationText">위치를 확인하는 중...</p>
+          <p class="date" id="dateText"></p>
+        </div>
+        <div class="weather-icon" id="weatherIcon">🌤️</div>
+      </div>
+
+      <div class="temperature-row">
+        <strong id="temperature">--°</strong>
+        <div class="weather-summary">
+          <span id="skyText">날씨 정보를 불러와 주세요</span>
+          <span id="rainText"></span>
+        </div>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-item">
+          <span>💧 습도</span>
+          <strong id="humidity">--%</strong>
+        </div>
+        <div class="detail-item">
+          <span>💨 풍속</span>
+          <strong id="wind">-- m/s</strong>
+        </div>
+        <div class="detail-item">
+          <span>🌡️ 오늘 최저</span>
+          <strong id="minTemp">--°</strong>
+        </div>
+        <div class="detail-item">
+          <span>☀️ 오늘 최고</span>
+          <strong id="maxTemp">--°</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="outfit-card">
+      <p class="section-label">TODAY'S OUTFIT</p>
+      <h2 id="outfitTitle">날씨를 불러오면 추천해드릴게요</h2>
+      <p id="outfitDescription">아래 버튼을 눌러 현재 위치의 날씨를 조회해 보세요.</p>
+
+      <div class="outfit-items" id="outfitItems">
+        <span>🧥 옷차림 추천 대기 중</span>
+      </div>
+
+      <div class="tip" id="weatherTip">
+        <span>💡</span>
+        <p>날씨 조회 후 우산과 옷차림 팁을 알려드려요.</p>
+      </div>
+    </section>
+
+    <button id="loadWeatherBtn" class="load-button" type="button">
+      내 위치 날씨로 옷차림 추천받기
+    </button>
+
+    <p class="status" id="statusText" aria-live="polite"></p>
+  </main>
+
+  <footer>
+    기상청 단기예보 API 기반 · 위치 정보는 날씨 조회에만 사용됩니다.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
